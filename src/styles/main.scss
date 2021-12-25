@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  margin: 0;
+}
+
+.rotom-outside-outline {
+  width: 100vw;
+  height: 100vh;
+  border-radius: 20px;
+  margin: 0;
+  background-color: black;
+  overflow: auto;
+  padding: 2px;
+
+  .rotom-border {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 14px rgb(237, 108, 77) solid;
+    background-color: white;
+
+    .rotom-inside-outline {
+      width: 100%;
+      height: 100%;
+      border: 2px black solid;
+      border-radius: 5px;
+      padding: 4vh 4vw;
+    }
+  }
+}
+
+/* POKEMON INFO */
+.pokemon-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h3 {
+    text-transform: capitalize;
+    span {
+      font-weight: 100;
+      color: #333;
+    }
+  }
+
+  .sprites {
+    display: flex;
+    flex-direction: 3;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* POKEMON SEARCH */
+.choosePokemon {
+  width: 100%;
+  select {
+    width: 100%;
+    height: 100%;
+    size: 12;
+    option {
+      text-transform: capitalize;
+    }
+  }
+}

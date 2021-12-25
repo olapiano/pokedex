@@ -1,0 +1,22 @@
+{
+  "normal": "normal",
+  "fighting": "strid",
+  "flying": "flygande",
+  "poison": "gift",
+  "ground": "mark",
+  "rock": "sten",
+  "bug": "kryp",
+  "ghost": "spöke",
+  "steel": "stål",
+  "fire": "eld",
+  "water": "vatten",
+  "grass": "gräs",
+  "electric": "elekrisk",
+  "psychic": "psykisk",
+  "ice": "is",
+  "dragon": "drake",
+  "dark": "mörk",
+  "fairy": "fe",
+  "unknown": "okänd",
+  "shadow": "skugga"
+}
