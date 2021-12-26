@@ -9,22 +9,24 @@ import Intro from './Intro';
 
 function App() {
   return (
-    <div className="rotom-outside-outline">
-      <div className="rotom-border">
-        <div className="rotom-inside-outline">
-          <Intro />
-          <Pokemon />
-          <Search />
+    <div>
+      {/* <Intro /> */}
+      <div className="rotom-outside-outline">
+        <div className="rotom-border">
+          <div className="rotom-inside-outline">
+            <Pokemon />
+            <Search />
 
-          <Lista />
+            <Lista />
+          </div>
         </div>
-      </div>
-      {/* <PokeTest /> */}
-      {/* <PokemonVal /> */}
+        {/* <PokeTest /> */}
+        {/* <PokemonVal /> */}
 
-      {/* <div className="col-sm-4">
+        {/* <div className="col-sm-4">
           <Typer />
         </div> */}
+      </div>
     </div>
   );
 }
