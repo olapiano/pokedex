@@ -5,12 +5,14 @@ import Typer from './Typer';
 import PokemonVal from './PokemonVal';
 // import rotom from './assets/images/rotom.png';
 import PokeTest from './PokeTest';
+import Intro from './Intro';
 
 function App() {
   return (
     <div className="rotom-outside-outline">
       <div className="rotom-border">
         <div className="rotom-inside-outline">
+          <Intro />
           <Pokemon />
           <Search />
 

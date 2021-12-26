@@ -15,7 +15,9 @@ body {
 
 .rotom-outside-outline {
   width: 100vw;
+  max-width: 500px;
   height: 100vh;
+  max-height: 800px;
   border-radius: 20px;
   margin: 0;
   background-color: black;
