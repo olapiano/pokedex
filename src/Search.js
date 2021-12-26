@@ -10,7 +10,7 @@ const Search = () => {
   };
 
   return (
-    <div className="mt-3">
+    <div className="search-phrase">
       <input
         type="text"
         value={searchPhrase}

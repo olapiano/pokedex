@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
+//import i18n from './i18n';
 
 const AppContext = React.createContext();
 

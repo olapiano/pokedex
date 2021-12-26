@@ -5,20 +5,9 @@ import { useGlobalContext } from './context';
 const Lista = () => {
   const { setPokemonName, pokemonList, pokemon } = useGlobalContext();
 
-  const selectHandler = () => {};
   return (
     <div className="choosePokemon">
-      <select name="sometext" size="10" onClick={() => {}}>
-        {pokemonList.map((item, index) => {
-          return (
-            <option key={index} onClick={() => setPokemonName(item.name)}>
-              {item.name}
-            </option>
-          );
-        })}
-      </select>
-
-      {/* {pokemonList.map((item, index) => {
+      {pokemonList.map((item, index) => {
         return (
           <div
             key={index}
@@ -33,7 +22,7 @@ const Lista = () => {
             </p>
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 };
