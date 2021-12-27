@@ -15,7 +15,9 @@ const Pokemon = () => {
     'front_shiny_female',
     'back_shiny_female',
   ];
+
   const { t } = useTranslation();
+
   useEffect(() => {
     fetchPokemon();
   }, [pokemonName]);
