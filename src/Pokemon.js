@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useGlobalContext } from './context';
 import { useTranslation } from 'react-i18next';
+import typeColors from './typeColors.json';
 
 const Pokemon = () => {
   const { pokemonName, fetchPokemon, pokemon } = useGlobalContext();
@@ -29,12 +30,17 @@ const Pokemon = () => {
       </h3>
 
       <p>
-        Typ:{' '}
         {pokemon.types &&
           pokemon.types.map((type, index) => {
             return (
-              <span key={index}>
-                {`${index > 0 ? '&' : ''} ${t(type.type.name)} `}
+              <span
+                key={index}
+                className="type"
+                style={{
+                  background: typeColors[type.type.name],
+                }}
+              >
+                {t(type.type.name)}
               </span>
             );
           })}
