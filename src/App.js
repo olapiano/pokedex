@@ -6,6 +6,7 @@ import PokemonVal from './PokemonVal';
 // import rotom from './assets/images/rotom.png';
 import PokeTest from './PokeTest';
 import Intro from './Intro';
+import { FaCog, FaBars } from 'react-icons/fa';
 
 function App() {
   return (
@@ -14,6 +15,11 @@ function App() {
       <div className="rotom-outside-outline">
         <div className="rotom-border">
           <div className="rotom-inside-outline">
+            <div className="menubar">
+              <FaBars />
+
+              <FaCog />
+            </div>
             <Pokemon />
             <Search />
 

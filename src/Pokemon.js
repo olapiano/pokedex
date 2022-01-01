@@ -37,12 +37,15 @@ const Pokemon = () => {
                 key={index}
                 className="type"
                 style={{
-                  background: `-webkit-linear-gradient(270deg, ${
+                  background: `linear-gradient(to bottom, ${
+                    typeColors[type.type.name][0]
+                  } 0%, ${typeColors[type.type.name][0]} 50%, ${
+                    typeColors[type.type.name][1] ||
                     typeColors[type.type.name][0]
                   } 50%, ${
                     typeColors[type.type.name][1] ||
                     typeColors[type.type.name][0]
-                  } 50%)`,
+                  } 100%)`,
                 }}
               >
                 {t(type.type.name)}

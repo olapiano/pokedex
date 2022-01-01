@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from './context';
+import { useTranslation } from 'react-i18next';
 
 const Search = () => {
   const { completePokemonList, setPokemonList, searchPhrase, setSearchPhrase } =
     useGlobalContext();
+
+  const { t } = useTranslation();
 
   const search = async (e) => {
     setSearchPhrase(e.target.value);
@@ -17,7 +20,7 @@ const Search = () => {
         onChange={(e) => {
           search(e);
         }}
-        placeholder="Sök Pokémon"
+        placeholder={t('search pokémon')}
       />
     </div>
   );
