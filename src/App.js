@@ -13,6 +13,7 @@ import Settings from './Settings';
 import { useGlobalContext } from './context';
 import ChooseLanguage from './ChooseLanguage';
 
+
 function App() {
   const { viewSearch, viewSettings, toggleSearch, toggleSettings } =
     useGlobalContext();
