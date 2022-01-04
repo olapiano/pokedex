@@ -29,7 +29,6 @@ const Pokemon = () => {
       <h3>
         {pokemon.name} <span>#{pokemon.id}</span>
       </h3>
-
       <p>
         {pokemon.types &&
           pokemon.types.map((type, index) => {
@@ -49,7 +48,12 @@ const Pokemon = () => {
                   } 100%)`,
                 }}
               >
-                {t(type.type.name)}
+                {t(type.type.name)}{' '}
+                <img
+                  src={require(`./assets/images/typer/${type.type.name}.png`)}
+                  alt=""
+                  className="type-sprite"
+                />
               </span>
             );
           })}

@@ -27,6 +27,6 @@
   "attack": "ataque",
   "defence": "defensa",
   "special-attack": "ataque especial",
-  "special-defence": "defensa especial",
+  "special-defense": "defensa especial",
   "speed": "velocidad"
 }

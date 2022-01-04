@@ -3,12 +3,11 @@ import Lista from './Lista';
 import Search from './Search';
 import Typer from './Typer';
 import PokemonVal from './PokemonVal';
-// import rotom from './assets/images/rotom.png';
 import PokeTest from './PokeTest';
 import Intro from './Intro';
-import { FaCog, FaBars, FaTimes } from 'react-icons/fa';
 import Bild from './Bild';
 import Settings from './Settings';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 import { useGlobalContext } from './context';
 import ChooseLanguage from './ChooseLanguage';
@@ -30,14 +29,10 @@ function App() {
             {viewSearch ? <FaTimes /> : <FaBars />}
           </div>
           <ChooseLanguage />
-          {/* <FaCog
-            onClick={() => {
-              toggleSettings();
-            }}
-          /> */}
         </div>
         {viewSearch ? (
           <div className="content">
+            <Typer />
             <Search />
             <Lista />{' '}
           </div>
