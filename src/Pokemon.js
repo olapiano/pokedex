@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import typeColors from './typeColors.json';
 
 const Pokemon = () => {
-  const { pokemonName, fetchPokemon, pokemon } = useGlobalContext();
+  const { pokemonName, fetchPokemon, pokemon, fetchEvolutionChain } =
+    useGlobalContext();
 
   const spriteSortOrder = [
     'front_default',
@@ -24,7 +25,7 @@ const Pokemon = () => {
   }, [pokemonName]);
 
   return (
-    <div className="pokemon-info">
+    <div className="content pokemon-info">
       <h3>
         {pokemon.name} <span>#{pokemon.id}</span>
       </h3>
@@ -68,8 +69,23 @@ const Pokemon = () => {
             })
             .map(([key, value]) => {
               console.log(key);
-              return <img key={key} src={value} alt={pokemon.name} />;
+              return (
+                <div className="sprite" key={key}>
+                  <img src={value} alt={pokemon.name} />
+                </div>
+              );
             })}
+      </div>
+      <div className="stats">
+        {pokemon.stats &&
+          pokemon.stats.map((stat, index) => {
+            return (
+              <div className="stat" key={index} onClick={fetchEvolutionChain}>
+                {t(stat.stat.name)}: {stat.base_stat}
+              </div>
+            );
+          })}
+        {console.log(pokemon)}
       </div>
     </div>
   );

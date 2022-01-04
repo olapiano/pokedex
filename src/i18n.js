@@ -5,15 +5,18 @@ import translationEN from './assets/locales/en/translation.json';
 import translationSV from './assets/locales/sv/translation.json';
 import translationES from './assets/locales/es/translation.json';
 
-const resources = {
+export const resources = {
   en: {
     translation: translationEN,
+    name: 'english',
   },
   sv: {
     translation: translationSV,
+    name: 'svenska',
   },
   es: {
     translation: translationES,
+    name: 'español',
   },
 };
 

@@ -11,6 +11,8 @@ const AppProvider = ({ children }) => {
   const [listOfTypes, setListOfTypes] = useState([]);
   const [chosenTypes, setChosenTypes] = useState('');
   const [searchPhrase, setSearchPhrase] = useState('');
+  const [viewSearch, setViewSearch] = useState(false);
+  const [viewSettings, setViewSettings] = useState(false);
 
   const apiLink = 'https://pokeapi.co/api/v2/';
   let searchQuery = `pokemon?limit=1118&offset=0`;
@@ -62,6 +64,15 @@ const AppProvider = ({ children }) => {
     } catch (error) {}
   };
 
+  const fetchEvolutionChain = async (req, res) => {
+    try {
+      res = await axios.get(`${apiLink + 'evolution-chain/' + pokemon.id}/`, {
+        headers: { Accept: 'application/json' },
+      });
+      console.log('Evulotion', res.data);
+    } catch (error) {}
+  };
+
   const typeClickHandler = (type) => {
     let types = chosenTypes;
     if (types.includes(type)) {
@@ -72,6 +83,16 @@ const AppProvider = ({ children }) => {
     } else if (types) {
       if (types.length < 2) setChosenTypes([type].concat(types));
     } else setChosenTypes([type]);
+  };
+
+  const toggleSearch = () => {
+    setViewSearch(!viewSearch);
+    setViewSettings(false);
+  };
+
+  const toggleSettings = () => {
+    setViewSettings(!viewSettings);
+    setViewSearch(false);
   };
 
   useEffect(() => {
@@ -110,6 +131,11 @@ const AppProvider = ({ children }) => {
         chosenTypes,
         setChosenTypes,
         typeClickHandler,
+        viewSearch,
+        viewSettings,
+        toggleSearch,
+        toggleSettings,
+        fetchEvolutionChain,
       }}
     >
       {children}

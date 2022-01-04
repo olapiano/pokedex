@@ -20,5 +20,13 @@
   "unknown": "unknown",
   "shadow": "shadow",
 
-  "search pokémon": "Buscar Pokémon"
+  "search pokémon": "Buscar Pokémon",
+  "choose language": "elige lengua",
+
+  "hp": "HP",
+  "attack": "ataque",
+  "defence": "defensa",
+  "special-attack": "ataque especial",
+  "special-defence": "defensa especial",
+  "speed": "velocidad"
 }

@@ -7,31 +7,43 @@ import PokemonVal from './PokemonVal';
 import PokeTest from './PokeTest';
 import Intro from './Intro';
 import { FaCog, FaBars } from 'react-icons/fa';
+import Bild from './Bild';
+import Settings from './Settings';
+
+import { useGlobalContext } from './context';
+import ChooseLanguage from './ChooseLanguage';
 
 function App() {
+  const { viewSearch, viewSettings, toggleSearch, toggleSettings } =
+    useGlobalContext();
   return (
     <div>
-      {/* <Intro /> */}
-      <div className="rotom-outside-outline">
-        <div className="rotom-border">
-          <div className="rotom-inside-outline">
-            <div className="menubar">
-              <FaBars />
+      <Bild />
 
-              <FaCog />
-            </div>
-            <Pokemon />
-            <Search />
-
-            <Lista />
-          </div>
+      <div className="container">
+        <div className="menubar">
+          <FaBars
+            onClick={() => {
+              toggleSearch();
+            }}
+          />
+          <ChooseLanguage />
+          {/* <FaCog
+            onClick={() => {
+              toggleSettings();
+            }}
+          /> */}
         </div>
-        {/* <PokeTest /> */}
-        {/* <PokemonVal /> */}
-
-        {/* <div className="col-sm-4">
-          <Typer />
-        </div> */}
+        {viewSearch ? (
+          <div className="content">
+            <Search />
+            <Lista />{' '}
+          </div>
+        ) : viewSettings ? (
+          <Settings />
+        ) : (
+          <Pokemon />
+        )}
       </div>
     </div>
   );

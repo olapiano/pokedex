@@ -20,5 +20,13 @@
   "unknown": "okänd",
   "shadow": "skugga",
 
-  "search pokémon": "Sök Pokémon"
+  "search pokémon": "Sök Pokémon",
+  "choose language": "välj språk",
+
+  "hp": "HP",
+  "attack": "attack",
+  "defense": "försvar",
+  "special-attack": "specialattack",
+  "special-defense": "specialförsvar",
+  "speed": "snabbhet"
 }
