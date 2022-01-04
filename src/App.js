@@ -6,13 +6,12 @@ import PokemonVal from './PokemonVal';
 // import rotom from './assets/images/rotom.png';
 import PokeTest from './PokeTest';
 import Intro from './Intro';
-import { FaCog, FaBars } from 'react-icons/fa';
+import { FaCog, FaBars, FaTimes } from 'react-icons/fa';
 import Bild from './Bild';
 import Settings from './Settings';
 
 import { useGlobalContext } from './context';
 import ChooseLanguage from './ChooseLanguage';
-
 
 function App() {
   const { viewSearch, viewSettings, toggleSearch, toggleSettings } =
@@ -23,11 +22,13 @@ function App() {
 
       <div className="container">
         <div className="menubar">
-          <FaBars
+          <div
             onClick={() => {
               toggleSearch();
             }}
-          />
+          >
+            {viewSearch ? <FaTimes /> : <FaBars />}
+          </div>
           <ChooseLanguage />
           {/* <FaCog
             onClick={() => {

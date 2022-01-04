@@ -22,7 +22,7 @@ const ChooseLanguage = () => {
           <span className="flag-icon flag-icon-se"></span> Svenska
         </p>
         <p className="dropdown-item" onClick={() => setLanguage('es')}>
-          <span className="flag-icon flag-icon-es"></span> Español
+          <span className="flag-icon flag-icon-co"></span> Español
         </p>
       </div>
     </div>
