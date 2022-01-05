@@ -23,7 +23,7 @@ const AppProvider = ({ children }) => {
         headers: { Accept: 'application/json' },
       });
       setCompletePokemonList(res.data.results);
-      console.log('Fetch Lista');
+      console.log('Fetch Lista', res.data.results);
     } catch (error) {}
   };
 

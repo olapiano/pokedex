@@ -4,7 +4,8 @@ import { useGlobalContext } from './context';
 const P = new Pokedex();
 
 const PokeTest = () => {
-  const { pokemonList, chosenTypes } = useGlobalContext();
+  const { setPokemonList, completePokemonList, chosenTypes } =
+    useGlobalContext();
   const [typeList1, setTypeList1] = useState([]);
   const [typeList2, setTypeList2] = useState([]);
 
@@ -17,6 +18,7 @@ const PokeTest = () => {
         .catch((error) => {
           console.error('There was an error: ', error);
         });
+    else setTypeList1([]);
     if (types.length > 1)
       P.getTypeByName(types[1])
         .then((response) => {
@@ -25,6 +27,9 @@ const PokeTest = () => {
         .catch((error) => {
           console.error('There was an error: ', error);
         });
+    else {
+      setTypeList2([]);
+    }
   };
 
   useEffect(() => {
@@ -32,6 +37,9 @@ const PokeTest = () => {
   }, [chosenTypes]);
 
   useEffect(() => {
+    let list = [];
+    console.log('type lists', typeList1, typeList2);
+
     if (
       typeList1 !== null &&
       typeList1 !== undefined &&
@@ -40,8 +48,6 @@ const PokeTest = () => {
       typeList2 !== undefined &&
       typeList2.length > 0
     ) {
-      let list = [];
-
       for (let i = 0; i < typeList1.length; i++) {
         for (let j = 0; j < typeList2.length; j++) {
           if (typeList1[i].pokemon.name === typeList2[j].pokemon.name) {
@@ -49,14 +55,31 @@ const PokeTest = () => {
           }
         }
       }
-      setTypeList1(list);
+    } else if (
+      typeList1 !== null &&
+      typeList1 !== undefined &&
+      typeList1.length > 0
+    )
+      for (let i = 0; i < typeList1.length; i++) {
+        list.push(typeList1[i]);
+      }
+    else {
+      setPokemonList(completePokemonList);
+      return;
     }
-  }, [typeList2]);
+
+    setPokemonList(
+      list.map((item) => {
+        return item.pokemon;
+      })
+    );
+  }, [typeList1, typeList2]);
+
   return (
     <div>
-      {typeList1.map((pokemon, index) => {
+      {/* {typeList1.map((pokemon, index) => {
         return <p key={index}>{pokemon.pokemon.name}</p>;
-      })}
+      })} */}
     </div>
   );
 };

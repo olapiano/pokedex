@@ -32,9 +32,9 @@ function App() {
         </div>
         {viewSearch ? (
           <div className="content">
-            <Typer />
             <Search />
-            <Lista />{' '}
+            <Typer />
+            <Lista />
           </div>
         ) : viewSettings ? (
           <Settings />
@@ -42,6 +42,7 @@ function App() {
           <Pokemon />
         )}
       </div>
+      <PokeTest />
     </div>
   );
 }
