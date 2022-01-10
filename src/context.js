@@ -13,6 +13,8 @@ const AppProvider = ({ children }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
   const [viewSearch, setViewSearch] = useState(false);
   const [viewSettings, setViewSettings] = useState(false);
+  const [species, setSpecies] = useState([]);
+  const [evolutionChain, setEvolutionChain] = useState([]);
 
   const apiLink = 'https://pokeapi.co/api/v2/';
   let searchQuery = `pokemon?limit=1118&offset=0`;
@@ -43,7 +45,7 @@ const AppProvider = ({ children }) => {
 
   const fetchTypeList = async (req, res) => {
     try {
-      res = await axios.get(`${apiLink + 'type'}/`, {
+      res = await axios.get(`${apiLink + 'type'}`, {
         headers: { Accept: 'application/json' },
       });
       console.log('Fetch Typer');
@@ -64,13 +66,36 @@ const AppProvider = ({ children }) => {
     } catch (error) {}
   };
 
+  const fetchSpecies = async (req, res) => {
+    if (pokemon)
+      try {
+        res = await axios.get(`${pokemon.species.url}`, {
+          headers: { Accept: 'application/json' },
+        });
+        console.log('Fetch Species', species.evolution_chain);
+        setSpecies(res.data);
+      } catch (error) {
+        console.log('Fetch species error');
+      }
+  };
+
   const fetchEvolutionChain = async (req, res) => {
-    try {
-      res = await axios.get(`${apiLink + 'evolution-chain/' + pokemon.id}/`, {
-        headers: { Accept: 'application/json' },
-      });
-      console.log('Evulotion', res.data);
-    } catch (error) {}
+    if (species)
+      try {
+        res = await axios.get(`${species.evolution_chain.url}`, {
+          headers: { Accept: 'application/json' },
+        });
+        console.log('Fetch Evolution Chain', res.data.chain);
+        let chain = [res.data.chain.species.name];
+        if (res.data.chain.evolves_to.length > 0) {
+          res.data.chain.evolves_to.forEach((element) => {
+            console.log('element: ', element);
+          });
+        }
+        setEvolutionChain(chain);
+      } catch (error) {
+        console.log('Fetch evolution chain error');
+      }
   };
 
   const typeClickHandler = (type) => {
@@ -113,6 +138,14 @@ const AppProvider = ({ children }) => {
     );
   }, [searchPhrase]);
 
+  useEffect(() => {
+    fetchSpecies();
+  }, [pokemon]);
+
+  useEffect(() => {
+    fetchEvolutionChain();
+  }, [species]);
+
   return (
     <AppContext.Provider
       value={{
@@ -136,6 +169,7 @@ const AppProvider = ({ children }) => {
         toggleSearch,
         toggleSettings,
         fetchEvolutionChain,
+        evolutionChain,
       }}
     >
       {children}

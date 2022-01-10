@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import typeColors from './typeColors.json';
 
 const Pokemon = () => {
-  const { pokemonName, fetchPokemon, pokemon, fetchEvolutionChain } =
+  const { pokemonName, fetchPokemon, pokemon, evolutionChain } =
     useGlobalContext();
 
   const spriteSortOrder = [
@@ -35,7 +35,7 @@ const Pokemon = () => {
             return (
               <span
                 key={index}
-                className="type"
+                className="type type-chosen"
                 style={{
                   background: `linear-gradient(to bottom, ${
                     typeColors[type.type.name][0]
@@ -84,12 +84,14 @@ const Pokemon = () => {
         {pokemon.stats &&
           pokemon.stats.map((stat, index) => {
             return (
-              <div className="stat" key={index} onClick={fetchEvolutionChain}>
+              <div className="stat" key={index}>
                 {t(stat.stat.name)}: {stat.base_stat}
               </div>
             );
           })}
-        {console.log(pokemon)}
+      </div>
+      <div className="evolution-line">
+        
       </div>
     </div>
   );
