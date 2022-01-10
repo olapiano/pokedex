@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useGlobalContext } from './context';
 import { useTranslation } from 'react-i18next';
 import typeColors from './typeColors.json';
+import { FaMars, FaVenus } from 'react-icons/fa';
 
 const Pokemon = () => {
   const { pokemonName, fetchPokemon, pokemon, evolutionChain } =
@@ -63,7 +64,12 @@ const Pokemon = () => {
         {pokemon.sprites &&
           Object.entries(pokemon.sprites)
             .filter(([key, value]) => {
-              return value !== null && key !== 'versions' && key !== 'other';
+              return (
+                value !== null &&
+                key !== 'versions' &&
+                key !== 'other' &&
+                !key.includes('back')
+              );
             })
             .sort((a, b) => {
               console.log(a);
@@ -72,9 +78,9 @@ const Pokemon = () => {
               );
             })
             .map(([key, value]) => {
-              console.log(key);
               return (
                 <div className="sprite" key={key}>
+                  {key.includes('female') && <FaVenus />}
                   <img src={value} alt={pokemon.name} />
                 </div>
               );
