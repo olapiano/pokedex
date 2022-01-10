@@ -86,15 +86,28 @@ const AppProvider = ({ children }) => {
           headers: { Accept: 'application/json' },
         });
         console.log('Fetch Evolution Chain', res.data.chain);
-        let chain = [res.data.chain.species.name];
+        let stage1 = res.data.chain.species.name;
+        let chain = [stage1];
         if (res.data.chain.evolves_to.length > 0) {
+          let stage2 = [];
           res.data.chain.evolves_to.forEach((element) => {
-            console.log('element: ', element);
+            stage2 = [...stage2, element.species.name];
+            if (element.evolves_to.length > 0) {
+              let stage3 = [];
+              element.evolves_to.forEach((element) => {
+                stage3 = [...stage3, element.species.name];
+              });
+              stage2 = [...stage2, stage3];
+            }
+            chain = [...chain, stage2];
+            stage2 = [];
           });
+
+          console.log('chain', chain);
         }
         setEvolutionChain(chain);
       } catch (error) {
-        console.log('Fetch evolution chain error');
+        console.log('Fetch evolution chain error', error);
       }
   };
 

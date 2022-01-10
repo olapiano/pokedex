@@ -91,7 +91,17 @@ const Pokemon = () => {
           })}
       </div>
       <div className="evolution-line">
-        
+        {evolutionChain.map((item, index) => {
+          return (
+            <p key={index}>
+              {index === 0
+                ? item
+                : item.map((stage2, key2) => {
+                    return <p key={key2}>{stage2}</p>;
+                  })}
+            </p>
+          );
+        })}
       </div>
     </div>
   );
